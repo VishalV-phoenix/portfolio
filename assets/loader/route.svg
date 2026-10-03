@@ -1,0 +1,28 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1664 936"
+    preserveAspectRatio="none">
+
+    <path
+        id="journeyRoute"
+        d="
+            M 365 700
+
+            C 410 650, 455 570, 500 515
+
+            C 555 550, 680 585, 790 555
+
+            C 760 500, 720 450, 680 400
+
+            C 770 430, 900 455, 1030 405
+
+            C 970 350, 880 300, 770 245
+
+            C 900 230, 1050 190, 1210 145
+        "
+        fill="none"
+        stroke="red"
+        stroke-width="4"
+    />
+
+</svg>

@@ -1,0 +1,232 @@
+/* =========================================
+   PAGE RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   MAP LOADER
+========================================= */
+
+.map-loader {
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   BACKGROUND MAP
+========================================= */
+
+.map-background {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   SVG ROUTE
+========================================= */
+
+.journey-route {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   FOOTPRINT LAYER
+========================================= */
+
+#footprints {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+/* =========================================
+   NORMAL TRAIL FOOTPRINT
+========================================= */
+
+.footprint {
+    position: absolute;
+
+    width: 18px;
+    height: auto;
+
+    pointer-events: none;
+
+    z-index: 3;
+
+    opacity: 1;
+
+    transition: opacity 1s ease;
+}
+
+
+.footprint.fade-out {
+    opacity: 0;
+}
+
+/* =========================================
+   FLAG
+========================================= */
+
+.flag-marker {
+    position: absolute;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    /*
+     * The marker itself does NOT rotate.
+     */
+    transform-origin: center center;
+}
+
+
+.flag-image {
+    display: block;
+
+    width: 120px;
+    height: auto;
+
+    /*
+     * Transparent background from SVG
+     */
+    background: transparent;
+
+    /*
+     * Force horizontal orientation
+     */
+    transform: rotate(0deg);
+
+    transform-origin: center center;
+}
+
+/* =========================================
+   FINAL FLAG
+========================================= */
+
+.flag-marker.final {
+
+    animation:
+        finalFlagFloat
+        2.2s
+        ease-in-out
+        infinite;
+}
+
+
+/*
+    Gentle movement after reaching
+    the destination.
+*/
+
+@keyframes finalFlagFloat {
+
+    0% {
+        margin-top: 0px;
+    }
+
+    50% {
+        margin-top: -5px;
+    }
+
+    100% {
+        margin-top: 0px;
+    }
+}
+
+
+/* =========================================
+   FINAL WAITING FOOTPRINT
+========================================= */
+
+.final-footprint {
+    position: absolute;
+
+    width: 18px;
+    height: auto;
+
+    pointer-events: none;
+
+    z-index: 9;
+
+    opacity: 0.25;
+
+    animation:
+        waitingFootprint
+        1.2s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================
+   WAITING ANIMATION
+========================================= */
+
+@keyframes waitingFootprint {
+
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}

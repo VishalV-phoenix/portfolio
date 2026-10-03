@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="map-loader">
+
+        <!-- Background map -->
+        <img
+            src="assets/loader/Map.png"
+            class="map-background"
+            alt="Journey map"
+        >
+
+        <!-- Journey route -->
+        <svg
+            class="journey-route"
+            viewBox="0 0 1672 941"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+        >
+
+            <path
+                id="journeyRoute"
+                d="
+                    M 346.1 738.8
+
+                    C 367.2 729.6, 391.8 697.6, 472.5 683.8
+
+                    C 553.2 670.1, 761.8 665.5, 830.5 656.4
+
+                    C 899.2 647.2, 872.5 642.6, 884.5 628.9
+
+                    C 896.6 615.2, 899.2 592.3, 902.8 574.0
+
+                    C 906.5 555.7, 904.7 537.3, 906.5 519.0
+
+                    C 908.3 500.7, 878.4 482.4, 913.8 464.1
+
+                    C 949.2 445.8, 1079.3 427.5, 1118.9 409.2
+
+                    C 1158.6 390.8, 1156.9 372.5, 1151.9 354.2
+
+                    C 1146.9 335.9, 1104.3 317.6, 1088.7 299.3
+
+                    C 1073.2 281.0, 1039.9 262.6, 1058.5 244.3
+
+                    C 1077.1 226.0, 1161.7 207.7, 1200.4 189.4
+
+                    C 1239.2 171.1, 1277.5 152.8, 1291.1 134.5
+
+                    C 1304.7 116.1, 1290.5 94.8, 1281.9 79.5
+
+                    C 1273.4 64.3, 1246.8 49.0, 1239.8 42.9
+                "
+                fill="none"
+                stroke="transparent"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+
+        </svg>
+
+
+        <!-- Footprints + moving flag -->
+        <div id="footprints"></div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
