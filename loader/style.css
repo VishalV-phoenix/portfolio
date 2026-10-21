@@ -1,0 +1,413 @@
+/* ==========================================================================
+   PHOENIX V LOADER (LOADER2) - STYLESHEET
+   Pure black-and-gold aesthetic, 3D Y-axis coin rotation,
+   silhouette metallic shine, and glowing loading line.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. RESET & VIEWPORT CONTAINER
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    background-color: #050505;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.loader2-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: radial-gradient(circle at 50% 70%, #0c0904 0%, #050505 60%, #000000 100%);
+    overflow: hidden;
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--l2-fade-duration, 800ms) cubic-bezier(0.4, 0, 0.2, 1),
+                visibility var(--l2-fade-duration, 800ms) ease;
+}
+
+.loader2-wrapper.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   0.1 SUBTLE TOP GOLDEN LIGHT / CELESTIAL GLOW
+   -------------------------------------------------------------------------- */
+.loader2-top-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--l2-top-glow-width, 85%);
+    max-width: 1400px;
+    height: var(--l2-top-glow-height, 48vh);
+    pointer-events: none;
+    z-index: 1;
+    display: var(--l2-top-glow-display, block);
+    opacity: var(--l2-top-glow-opacity, 0.65);
+    background: radial-gradient(
+        ellipse 75% 55% at 50% 0%,
+        var(--l2-top-glow-color, rgba(255, 210, 90, 0.24)) 0%,
+        var(--l2-top-glow-ambient, rgba(215, 150, 30, 0.08)) 45%,
+        transparent 80%
+    );
+    animation: topGlowBreathe var(--l2-top-glow-pulse, 5.0s) ease-in-out infinite alternate;
+}
+
+/* Subtle concentrated core at top edge */
+.loader2-top-glow-core {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48%;
+    height: 40%;
+    opacity: var(--l2-top-glow-core, 0.50);
+    background: radial-gradient(
+        ellipse 50% 32% at 50% 0%,
+        rgba(255, 235, 160, 0.35) 0%,
+        rgba(255, 195, 60, 0.14) 50%,
+        transparent 90%
+    );
+    filter: blur(16px);
+}
+
+@keyframes topGlowBreathe {
+    0% {
+        opacity: calc(var(--l2-top-glow-opacity, 0.65) * 0.88);
+        transform: translateX(-50%) scaleY(0.97);
+    }
+    100% {
+        opacity: calc(var(--l2-top-glow-opacity, 0.65) * 1.06);
+        transform: translateX(-50%) scaleY(1.03);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   1. PARTICLES & EMBERS CONTAINER OVERLAYS
+   -------------------------------------------------------------------------- */
+#loader2Particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.loader2-embers-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESPONSIVE CENTER GROUP POSITIONING (~25% above bottom)
+   -------------------------------------------------------------------------- */
+.loader2-group {
+    position: absolute;
+    left: 50%;
+    /* Normal viewports: exactly 75% down from top (25% above bottom)
+       Short viewports: clamped between min top padding and min bottom padding */
+    top: clamp(
+        calc(var(--l2-min-top-pad, 60px) + 80px),
+        var(--l2-v-pos, 75vh),
+        calc(100dvh - var(--l2-min-bottom-pad, 80px) - 20px)
+    );
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+    width: max-content;
+}
+
+/* --------------------------------------------------------------------------
+   3. 3D COIN STAGE & ROTATION
+   -------------------------------------------------------------------------- */
+.coin-stage {
+    position: relative;
+    width: var(--l2-logo-w-desktop, 175px);
+    /* Logo aspect ratio is 941:1024 (~1:1.088) */
+    aspect-ratio: 941 / 1024;
+    perspective: var(--l2-coin-perspective, 1000px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coin-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: coinSpin var(--l2-coin-period, 6.5s) linear infinite;
+    animation-direction: var(--l2-coin-direction, normal);
+    will-change: transform;
+}
+
+/* Y-Axis continuous rotation */
+@keyframes coinSpin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Coin Faces */
+.coin-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Front Face */
+.coin-face-front {
+    transform: translateZ(calc(var(--l2-rim-thickness, 3px) / 2));
+    filter: drop-shadow(0 4px 18px rgba(255, 160, 0, 0.22));
+}
+
+/* Reverse Face */
+.coin-face-back {
+    transform: rotateY(180deg) scaleX(-1) translateZ(calc(var(--l2-rim-thickness, 3px) / 2));
+    filter: brightness(var(--l2-back-brightness, 0.85)) drop-shadow(0 4px 18px rgba(210, 120, 0, 0.15));
+}
+
+/* Simulated Middle Rim / Depth Layer for Tactile Coin Thickness */
+.coin-rim-mid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateZ(0);
+    filter: drop-shadow(0 0 1.5px var(--l2-rim-color, #b8860b));
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.coin-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. METALLIC SILHOUETTE SHINE (Strictly clipped to Phoenix contour)
+   -------------------------------------------------------------------------- */
+.logo-shine-layer {
+    position: absolute;
+    inset: -10%;
+    width: 120%;
+    height: 120%;
+    pointer-events: none;
+    z-index: 5;
+    mix-blend-mode: screen;
+    opacity: var(--l2-shine-intensity, 0.65);
+
+    /* Clip shine to exact transparent contour of the Phoenix V */
+    -webkit-mask-image: url('assets/phoenix-v-logo.png');
+    mask-image: url('assets/phoenix-v-logo.png');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    /* Sweeping gradient highlight */
+    background: linear-gradient(
+        var(--l2-shine-angle, 115deg),
+        transparent 32%,
+        var(--l2-shine-warm-gold, rgba(255, 215, 120, 0.45)) 44%,
+        var(--l2-shine-highlight, rgba(255, 255, 255, 0.95)) 50%,
+        var(--l2-shine-warm-gold, rgba(255, 215, 120, 0.45)) 56%,
+        transparent 68%
+    );
+    background-size: 260% 260%;
+    background-position: -140% -140%;
+
+    animation: shineSweep var(--l2-shine-interval, 4.8s) ease-in-out infinite;
+}
+
+@keyframes shineSweep {
+    0% {
+        background-position: -140% -140%;
+        opacity: 0;
+    }
+    10% {
+        opacity: var(--l2-shine-intensity, 0.65);
+    }
+    35% {
+        background-position: 140% 140%;
+        opacity: var(--l2-shine-intensity, 0.65);
+    }
+    40%, 100% {
+        background-position: 140% 140%;
+        opacity: 0;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   5. GOLDEN GLOWING LOADING LINE
+   -------------------------------------------------------------------------- */
+.loading-line-wrapper {
+    position: relative;
+    margin-top: var(--l2-logo-line-spacing, 32px);
+    width: var(--l2-line-w-desktop, 220px);
+    height: var(--l2-line-h, 2.5px);
+    display: flex;
+    align-items: center;
+}
+
+/* Dark Bronze Underlay Track */
+.loading-line-track {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--l2-line-track, rgba(35, 22, 10, 0.7));
+    border-radius: 999px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(255, 160, 40, 0.1);
+}
+
+/* Active Luminous Golden Bar */
+.loading-line-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        var(--l2-line-start, #e68a00) 0%,
+        #ffb338 60%,
+        var(--l2-line-end, #fff5c0) 100%
+    );
+    /* Multi-layered radiant amber-gold glow */
+    box-shadow:
+        0 0 calc(4px * var(--l2-line-glow-scale, 1)) rgba(255, 220, 110, 0.95),
+        0 0 calc(12px * var(--l2-line-glow-scale, 1)) rgba(255, 150, 20, 0.75),
+        0 0 calc(28px * var(--l2-line-glow-scale, 1)) rgba(255, 100, 0, 0.40);
+    transition: width 0.15s ease-out;
+}
+
+/* Leading Edge Glowing Spark / Flare */
+.loading-line-flare {
+    position: absolute;
+    top: 50%;
+    right: -2px;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow:
+        0 0 6px 2px rgba(255, 240, 180, 0.95),
+        0 0 14px 4px rgba(255, 140, 0, 0.8);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loading-line-fill.is-active .loading-line-flare {
+    opacity: 1;
+}
+
+/* Indeterminate Scanning Mode */
+.loading-line-wrapper.is-indeterminate .loading-line-fill {
+    width: 38% !important;
+    animation: indeterminateScan 2.4s ease-in-out infinite;
+}
+
+@keyframes indeterminateScan {
+    0% {
+        left: 0%;
+        transform: translateX(-100%);
+    }
+    50% {
+        left: 100%;
+        transform: translateX(0%);
+    }
+    100% {
+        left: 100%;
+        transform: translateX(100%);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE MEDIA QUERIES (Mobile & Short Viewports)
+   -------------------------------------------------------------------------- */
+/* Mobile Portrait & Standard Small Screens */
+@media (max-width: 768px) {
+    .coin-stage {
+        width: var(--l2-logo-w-mobile, 125px);
+    }
+    .loading-line-wrapper {
+        width: var(--l2-line-w-mobile, 160px);
+        margin-top: calc(var(--l2-logo-line-spacing, 32px) * 0.85);
+    }
+}
+
+/* Short screens / Mobile Landscape (height <= 550px) */
+@media (max-height: 550px) {
+    .loader2-group {
+        top: 72%;
+    }
+    .coin-stage {
+        width: clamp(90px, 20vh, 130px);
+    }
+    .loading-line-wrapper {
+        width: clamp(120px, 32vw, 170px);
+        margin-top: 18px;
+    }
+}
+
+/* Ultra-short screens (height <= 400px) */
+@media (max-height: 400px) {
+    .loader2-group {
+        top: 68%;
+    }
+    .coin-stage {
+        width: clamp(75px, 18vh, 105px);
+    }
+    .loading-line-wrapper {
+        margin-top: 12px;
+    }
+}

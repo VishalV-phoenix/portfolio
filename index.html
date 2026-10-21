@@ -3,20 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
-    <title>Portfolio</title>
+    <title>Vishal | Portfolio</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- 0. Central Settings Configuration (Loads first) -->
+    <script src="config/settings.js"></script>
+
+    <link rel="stylesheet" href="tree magic/style.css">
+    <link rel="stylesheet" href="effects/golden-particles.css">
+    <link rel="stylesheet" href="loader/style.css">
 </head>
 
-<body>
+<body class="is-loading">
 
-    <div class="map-loader">
+    <!-- 1. Full-screen Map Loader Overlay -->
+    <div class="map-loader" id="mapLoader" aria-label="Journey Map Loader">
 
         <!-- Background map -->
         <img
-            src="assets/loader/Map.png"
+            src="loader/Map.png"
             class="map-background"
             alt="Journey map"
         >
@@ -28,7 +34,6 @@
             preserveAspectRatio="xMidYMid slice"
             aria-hidden="true"
         >
-
             <path
                 id="journeyRoute"
                 d="
@@ -68,9 +73,7 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
             />
-
         </svg>
-
 
         <!-- Footprints + moving flag -->
         <div id="footprints"></div>
@@ -78,7 +81,18 @@
     </div>
 
 
-    <script src="script.js"></script>
+    <!-- 2. Magic Tree Section -->
+    <main class="tree-scroll-container" id="treeSection">
+        <div class="canvas-sticky-wrapper">
+            <canvas id="tree-canvas"></canvas>
+        </div>
+    </main>
+
+
+    <!-- Scripts -->
+    <script src="effects/golden-particles.js"></script>
+    <script src="tree magic/script.js"></script>
+    <script src="loader/script.js"></script>
 
 </body>
 

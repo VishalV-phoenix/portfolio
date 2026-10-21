@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Phoenix V Loader (Loader 2) | Test Page</title>
+
+    <!-- 1. Dedicated Loader 2 Configuration (Loads First) -->
+    <script src="settings.js"></script>
+
+    <!-- 2. Stylesheets -->
+    <link rel="stylesheet" href="../effects/golden-particles.css">
+    <link rel="stylesheet" href="../cursor/golden-cursor.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Fullscreen Loader 2 Stage -->
+    <div class="loader2-wrapper" id="phoenixLoaderStage" aria-label="Phoenix V Loader">
+
+        <!-- Subtle Top Golden Light (Celestial Bloom from above) -->
+        <div class="loader2-top-glow" aria-hidden="true">
+            <div class="loader2-top-glow-core"></div>
+        </div>
+
+        <!-- Ambient Golden Particles Overlay -->
+        <div id="loader2Particles"></div>
+
+        <!-- Center Group (Positioned ~25% Above Viewport Bottom Edge) -->
+        <div class="loader2-group">
+
+            <!-- 3D Coin Rotation Stage -->
+            <div class="coin-stage" aria-label="Spinning Phoenix V Coin">
+                <div class="coin-flipper">
+
+                    <!-- Simulated Coin Middle Depth Rim -->
+                    <div class="coin-rim-mid" aria-hidden="true">
+                        <img
+                            src="assets/phoenix-v-logo.png"
+                            class="coin-image"
+                            alt=""
+                        >
+                    </div>
+
+                    <!-- Front Face with Metallic Silhouette Shine -->
+                    <div class="coin-face coin-face-front">
+                        <img
+                            src="assets/phoenix-v-logo.png"
+                            class="coin-image"
+                            alt="Phoenix V Logo"
+                        >
+                        <!-- Silhouette-Masked Metallic Shine -->
+                        <div class="logo-shine-layer" aria-hidden="true"></div>
+                    </div>
+
+                    <!-- Reverse (Back) Face -->
+                    <div class="coin-face coin-face-back" aria-hidden="true">
+                        <img
+                            src="assets/phoenix-v-logo.png"
+                            class="coin-image"
+                            alt=""
+                        >
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Golden Glowing Loading Line -->
+            <div class="loading-line-wrapper" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <div class="loading-line-track"></div>
+                <div class="loading-line-fill">
+                    <div class="loading-line-flare"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 3. Scripts -->
+    <script src="../effects/golden-particles.js"></script>
+    <!-- Cursor trail settings (edit /cursor/settings.js to configure) -->
+    <script src="../cursor/settings.js"></script>
+    <script src="../cursor/golden-cursor.js"></script>
+    <!-- Loader 2 sub-modules (load before coordinator) -->
+    <script src="particles.js"></script>
+    <script src="coin.js"></script>
+    <!-- Loader 2 coordinator -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

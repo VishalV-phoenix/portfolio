@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Golden Sparkle Cursor Effect - Stylesheet
+   Delicate glowing dust and tiny sparkles trailing the user's cursor
+   ========================================================================== */
+
+/* Full-bleed transparent canvas overlay for cursor particles */
+.golden-cursor-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    display: block;
+    z-index: 25;
+}
+
+/* Applied to the active container when hideNativeCursor is enabled */
+.golden-cursor-active {
+    cursor: none !important;
+}
+
+/* Ensure child elements inside the active container also hide the native cursor
+   while still allowing clicks, selections, and pointer events to pass through */
+.golden-cursor-active * {
+    cursor: none !important;
+}
