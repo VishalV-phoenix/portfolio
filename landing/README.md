@@ -1,20 +1,84 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
 
-# Run and deploy your AI Studio app
+# Vishal V — Personal Portfolio
 
-This contains everything you need to run your app locally.
+A personal portfolio built to showcase my journey as a Computer Science and Engineering student, my technical projects, and my interests in AI/ML and computational biology.
 
-View your app in AI Studio: https://ai.studio/apps/1e5131f9-4581-4155-8a57-1850f3e47374
+The website combines a dark, magical forest aesthetic with interactive animations and scroll-driven storytelling.
+
+## About Me
+
+I'm a Computer Science and Engineering student interested in Artificial Intelligence, Machine Learning, and the intersection of computer science and biology.
+
+I'm particularly interested in exploring how AI can contribute to scientific discovery, including bioinformatics and computational biology.
+
+## Features
+
+- **Phoenix-inspired loader** — a custom loading experience.
+- **Interactive forest theme** — a magical, dark visual design.
+- **Scroll-driven storytelling** — navigate through the portfolio using scroll interactions.
+- **Tree growth timelapse** — a visual representation of growth and learning.
+- **Portfolio sections** — Projects, Skills, About, and Contact.
+- **Interactive effects** — cursor particles and scroll progress indicators.
+- **Responsive design** — designed to work across different screen sizes.
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- HTML and CSS
+- SVG and Canvas-based visual effects
+
+## Project Structure
+
+```text
+landing/
+├── public/       # Static assets and images
+├── src/          # React application source
+├── index.html
+├── package.json
+└── vite.config.ts
+```
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+### Prerequisites
 
+- Node.js
+- npm
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/VishalV-phoenix/portfolio.git
+cd portfolio/landing
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Follow the local URL printed in the terminal to open the website.
+
+## Live Website
+
+Coming soon.
+
+## Connect
+
+- GitHub: [VishalV-phoenix](https://github.com/VishalV-phoenix)
+- LinkedIn:[connect](https://www.linkedin.com/in/vishal-v-821996387/)
+
+---
+
+Built with curiosity, creativity, and a love for learning.
