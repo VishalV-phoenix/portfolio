@@ -1,0 +1,11 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix landing run dev",
+    "build": "npm --prefix landing run build",
+    "preview": "npm --prefix landing run preview",
+    "lint": "npm --prefix landing run lint"
+  }
+}

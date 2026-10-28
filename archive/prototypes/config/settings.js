@@ -265,7 +265,7 @@
                  * Default: 95
                  * Suggested range: 60 to 160
                  */
-                maxParticles: 115,
+                maxParticles: 55,
 
                 /**
                  * Maximum active particle count on mobile screens (<=768px)
@@ -569,6 +569,40 @@
             zIndex: 25,
         },
 
+        // ====================================================================
+        // 5. MAGIC CIRCLE INTERACTION SETTINGS
+        // ====================================================================
+        magicCircle: {
+            /**
+             * Horizontal activation range measured as a percentage of viewport width from the left edge (0 to 100).
+             * Moving the cursor anywhere within the leftmost 60% of the screen allows the magic circle interaction.
+             * Unit: Percentage (0 - 100)
+             * Default: 60 (covers ~60% of the viewport width from the left edge)
+             * Suggested range: 40 to 80
+             */
+            activationWidthPercent: 60,
+
+            /**
+             * Vertical center alignment of the activation hotspot.
+             * Unit: Percentage (0 - 100)
+             * Default: 48
+             */
+            hotspotYPercent: 48,
+
+            /**
+             * Horizontal anchor position for the portal origin.
+             * Unit: Percentage (0 - 100)
+             * Default: 14
+             */
+            hotspotXPercent: 14,
+
+            /**
+             * Snap distance in pixels to complete the circle.
+             * Unit: Pixels (px)
+             * Default: 36
+             */
+            triggerSnapRadius: 36,
+        },
 
         // ====================================================================
         // HELPER: APPLY SETTINGS TO CSS CUSTOM PROPERTIES

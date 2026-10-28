@@ -676,7 +676,7 @@
              * Set to false if you want the loader to stay permanently visible during design testing.
              * Default: false (keeps test page visible for inspection)
              */
-            autoCompleteOn100: false,
+            autoCompleteOn100: true,
 
             /**
              * Pause duration in milliseconds after reaching 100% before starting the fade-out.
