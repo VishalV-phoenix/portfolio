@@ -37,7 +37,7 @@ export const NavigationButtons: React.FC<NavigationButtonsProps> = ({
         ...style,
       }}
     >
-      <div className="flex items-center justify-center gap-1.5 md:gap-3.5 min-w-full w-max mx-auto">
+      <div className="flex items-center justify-center gap-1 md:gap-3.5 min-w-full w-max mx-auto">
         {PROFILE_CONFIG.navItems.map((item) => {
           const handleClick = () => {
             if (item.id === 'home') {
@@ -65,7 +65,7 @@ export const NavigationButtons: React.FC<NavigationButtonsProps> = ({
                 rippleOnHover={true}
                 rippleOnClick={true}
                 onClick={handleClick}
-                className="!min-h-0 !py-1 md:!py-2 !px-2.5 md:!px-5 text-[11px] md:text-sm font-medium text-[#fcfcfb] !cursor-pointer !rounded-full transition-all duration-200 active:scale-95 shrink-0"
+                className="!min-h-0 !py-1 md:!py-2 !px-1.5 md:!px-5 text-[10px] md:text-sm font-medium text-[#fcfcfb] !cursor-pointer !rounded-full transition-all duration-200 active:scale-95 shrink-0"
               >
                 {item.label}
               </WaterGlass>
